@@ -9,6 +9,7 @@
   @include mq(md) {
     flex-flow: column nowrap;
     position: fixed;
+    z-index: 0;
     width: $nav-width-md;
     height: 100%;
     border-right: $border $border-color;
@@ -23,6 +24,7 @@
 
 .main {
   @include mq(md) {
+    background-color: $body-background-color;
     position: relative;
     max-width: $content-width;
     margin-left: $nav-width-md;
@@ -103,6 +105,8 @@
   display: flex;
   min-height: $header-height;
   align-items: center;
+  position: relative;
+  z-index: 10;
 
   @include mq(md) {
     height: $header-height;
