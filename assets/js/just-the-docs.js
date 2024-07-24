@@ -1,4 +1,5 @@
 ---
+layout: null
 ---
 (function (jtd, undefined) {
 
@@ -144,6 +145,18 @@ function searchLoaded(index, docs) {
   var mainHeader = document.getElementById('main-header');
   var currentInput;
   var currentSearchIndex = 0;
+
+  {%- if site.search.focus_shortcut_key %}
+  // add event listener on ctrl + <focus_shortcut_key> for showing the search input
+  jtd.addEvent(document, 'keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === '{{ site.search.focus_shortcut_key }}') {
+      e.preventDefault();
+
+      mainHeader.classList.add('nav-open');
+      searchInput.focus();
+    }
+  });
+  {%- endif %}
 
   function showSearch() {
     document.documentElement.classList.add('search-active');
@@ -488,7 +501,7 @@ jtd.setTheme = function(theme) {
 
 function navLink() {
   var pathname = document.location.pathname;
-  
+
   var navLink = document.getElementById('site-nav').querySelector('a[href="' + pathname + '"]');
   if (navLink) {
     return navLink;
@@ -543,12 +556,14 @@ function activateNav() {
 // Document ready
 
 jtd.onReady(function(){
-  initNav();
+  if (document.getElementById('site-nav')) {
+    initNav();
+    activateNav();
+    scrollNav();
+  }
   {%- if site.search_enabled != false %}
   initSearch();
   {%- endif %}
-  activateNav();
-  scrollNav();
 });
 
 // Copy button on code

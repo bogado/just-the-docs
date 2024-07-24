@@ -17,22 +17,95 @@ This website is built from the `HEAD` of the `main` branch of the theme reposito
 
 Code changes to `main` that are *not* in the latest release:
 
+- Added: `nav_enabled` site, layout, and page-level variable to selectively show or hide the side/mobile menu by [@kevinlin1] in [#1441]. The minimal layout was reimplemented using this feature, and now has support for the site-wide search bar and auxiliary links.
+- Fixed: protect `search-data.json` file from front matter default for layout by [@mattxwang] in [#1468]
+
+Docs changes made since the latest release:
+
+- Docs: Explained the `nav_enabled` variables as an alternative to using the minimal layout [@kevinlin1] in [#1441].
+
+[#1468]: https://github.com/just-the-docs/just-the-docs/pull/1468
+
+## Release v0.8.2
+
+Hi everyone! This patch release fixes a bug where a default layout with unrestricted `scope` (`path: ""`) breaks JavaScript functionality. Users who do not use a default layout with unrestricted `scope` should not be affected. This should be a straightforward upgrade for all users. Thank you to [@pdmosses] for triaging and fixing the bug!
+
+### Bugfixes
+
+- Fixed: Protect theme JS file from front matter default for layout by [@pdmosses] in [#1447]
+
+[#1447]: https://github.com/just-the-docs/just-the-docs/pull/1447
+
+## Release v0.8.1
+
+Hi folks! This patch release fixes a bug introduced in `0.8.0` that affects users who build their sites in strict mode. It is a straightforward upgrade that should require no manual migration changes. Thank you to [@Zarthus] for quickly catching and fixing this bug!
+
+### Bugfixes
+
+- Fixed: Liquid filter typo in breadcrumb component (`strip` instead of `trim`) by [@Zarthus] in [#1434]
+
+### Documentation
+
+- Build docs site using strict mode and `strict_filters` by [@Zarthus] in [#1435]
+
+### New Contributors
+
+- [@Zarthus] made their first contribution in [#1434]
+
+[@Zarthus]: https://github.com/Zarthus
+
+[#1434]: https://github.com/just-the-docs/just-the-docs/pull/1434
+[#1435]: https://github.com/just-the-docs/just-the-docs/pull/1435
+
+## Release v0.8.0
+
+Hi folks! This first minor release of 2024 has a short number of changes: a large improvement of build times for large sites, a new keyboard shortcut to focus the search bar, and sidebar navigation bugfixes for "pretty" URLs (with `.html` omitted) and the clickable area on Safari. This release has no explicit breaking changes and should be a straightforward upgrade for most (if not all) users.
+
+### Using Release `v0.8.0`
+
+Users who have not pinned the theme version will be **automatically upgraded to `v0.8.0` the next time they build their site**.
+
+To use this release explicitly as a remote theme:
+
+```yml
+remote_theme: just-the-docs/just-the-docs@v0.8.0
+```
+
+To use this version explicitly as a gem-based theme, pin the version in your `Gemfile` and re-run `bundle install` or `bundle update just-the-docs`:
+
+```ruby
+gem "just-the-docs", "0.8.0"
+```
+
+To use and pin a previous version of the theme, replace the `0.8.0` with the desired release tag.
+
+### New Features
+
+- Added: configurable keyboard shortcut to focus search input by [@kcromanpl-bajra] in [#1411]
+
+### Bugfixes
+
+- Fixed: quicker build by [@pdmosses] in [#1397]
 - Fixed: incorrect navigation when `.html` omitted from URL by [@pdmosses] in [#1374]
 - Fixed: incorrect positioning of clickable area for navigation links on Safari by [@mattxwang] in [#1403]
 
-Docs changes made since the latest release:
+### Documentation
 
 - Add documentation to "Navigation Structure" on grouping pages with collections by [@mitchnemirov] in [#1390]
 
 ### New Contributors
 
 - [@mitchnemirov] made their first contribution in [#1390]
+- [@kcromanpl-bajra] made their first contribution in [#1411]
 
 [@mitchnemirov]: https://github.com/mitchnemirov
+[@kcromanpl-bajra]: https://github.com/kcromanpl-bajra
 
 [#1374]: https://github.com/just-the-docs/just-the-docs/pull/1374
 [#1390]: https://github.com/just-the-docs/just-the-docs/pull/1390
+[#1397]: https://github.com/just-the-docs/just-the-docs/pull/1397
 [#1403]: https://github.com/just-the-docs/just-the-docs/pull/1403
+[#1411]: https://github.com/just-the-docs/just-the-docs/pull/1411
 
 ## Release v0.7.0
 
