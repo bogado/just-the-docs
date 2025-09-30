@@ -67,10 +67,10 @@
 }
 
 .main-content-wrap {
-  @include container;
-
   padding-top: $gutter-spacing-sm;
   padding-bottom: $gutter-spacing-sm;
+
+  @include container;
 
   @include mq(md) {
     padding-top: $gutter-spacing;
@@ -130,8 +130,6 @@
 }
 
 .site-title {
-  @include container;
-
   flex-grow: 1;
   display: flex;
   height: 100%;
@@ -139,6 +137,9 @@
   padding-top: $sp-3;
   padding-bottom: $sp-3;
   color: $body-heading-color;
+
+  @include container;
+
   @include fs-6;
 
   @include mq(md) {
@@ -204,14 +205,15 @@ body {
 // stylelint-enable selector-max-type
 
 .site-footer {
-  @include container;
-
   position: absolute;
   bottom: 0;
   left: 0;
   padding-top: $sp-4;
   padding-bottom: $sp-4;
   color: $grey-dk-000;
+
+  @include container;
+
   @include fs-2;
 
   @include mq(md) {
